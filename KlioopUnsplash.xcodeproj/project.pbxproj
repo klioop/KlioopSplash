@@ -1,0 +1,454 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		31AE8E2928B8DE9200DA6583 /* KlioopUnsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */; };
+		31AE8E2E28B8DE9200DA6583 /* KlioopUnsplashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E2D28B8DE9200DA6583 /* KlioopUnsplashTests.swift */; };
+		31AE8E2F28B8DE9200DA6583 /* KlioopUnsplash.h in Headers */ = {isa = PBXBuildFile; fileRef = 31AE8E2328B8DE9200DA6583 /* KlioopUnsplash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		31AE8E2A28B8DE9200DA6583 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 31AE8E1728B8DE9200DA6583 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 31AE8E1F28B8DE9200DA6583;
+			remoteInfo = KlioopUnsplash;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KlioopUnsplash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31AE8E2328B8DE9200DA6583 /* KlioopUnsplash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KlioopUnsplash.h; sourceTree = "<group>"; };
+		31AE8E2828B8DE9200DA6583 /* KlioopUnsplashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlioopUnsplashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		31AE8E2D28B8DE9200DA6583 /* KlioopUnsplashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlioopUnsplashTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		31AE8E1D28B8DE9200DA6583 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31AE8E2528B8DE9200DA6583 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31AE8E2928B8DE9200DA6583 /* KlioopUnsplash.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		31AE8E1628B8DE9200DA6583 = {
+			isa = PBXGroup;
+			children = (
+				31AE8E2228B8DE9200DA6583 /* KlioopUnsplash */,
+				31AE8E2C28B8DE9200DA6583 /* KlioopUnsplashTests */,
+				31AE8E2128B8DE9200DA6583 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		31AE8E2128B8DE9200DA6583 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */,
+				31AE8E2828B8DE9200DA6583 /* KlioopUnsplashTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		31AE8E2228B8DE9200DA6583 /* KlioopUnsplash */ = {
+			isa = PBXGroup;
+			children = (
+				31AE8E2328B8DE9200DA6583 /* KlioopUnsplash.h */,
+			);
+			path = KlioopUnsplash;
+			sourceTree = "<group>";
+		};
+		31AE8E2C28B8DE9200DA6583 /* KlioopUnsplashTests */ = {
+			isa = PBXGroup;
+			children = (
+				31AE8E2D28B8DE9200DA6583 /* KlioopUnsplashTests.swift */,
+			);
+			path = KlioopUnsplashTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		31AE8E1B28B8DE9200DA6583 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31AE8E2F28B8DE9200DA6583 /* KlioopUnsplash.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		31AE8E1F28B8DE9200DA6583 /* KlioopUnsplash */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31AE8E3228B8DE9200DA6583 /* Build configuration list for PBXNativeTarget "KlioopUnsplash" */;
+			buildPhases = (
+				31AE8E1B28B8DE9200DA6583 /* Headers */,
+				31AE8E1C28B8DE9200DA6583 /* Sources */,
+				31AE8E1D28B8DE9200DA6583 /* Frameworks */,
+				31AE8E1E28B8DE9200DA6583 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KlioopUnsplash;
+			productName = KlioopUnsplash;
+			productReference = 31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		31AE8E2728B8DE9200DA6583 /* KlioopUnsplashTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31AE8E3528B8DE9200DA6583 /* Build configuration list for PBXNativeTarget "KlioopUnsplashTests" */;
+			buildPhases = (
+				31AE8E2428B8DE9200DA6583 /* Sources */,
+				31AE8E2528B8DE9200DA6583 /* Frameworks */,
+				31AE8E2628B8DE9200DA6583 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				31AE8E2B28B8DE9200DA6583 /* PBXTargetDependency */,
+			);
+			name = KlioopUnsplashTests;
+			productName = KlioopUnsplashTests;
+			productReference = 31AE8E2828B8DE9200DA6583 /* KlioopUnsplashTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		31AE8E1728B8DE9200DA6583 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					31AE8E1F28B8DE9200DA6583 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					31AE8E2728B8DE9200DA6583 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 31AE8E1A28B8DE9200DA6583 /* Build configuration list for PBXProject "KlioopUnsplash" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 31AE8E1628B8DE9200DA6583;
+			productRefGroup = 31AE8E2128B8DE9200DA6583 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				31AE8E1F28B8DE9200DA6583 /* KlioopUnsplash */,
+				31AE8E2728B8DE9200DA6583 /* KlioopUnsplashTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		31AE8E1E28B8DE9200DA6583 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31AE8E2628B8DE9200DA6583 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		31AE8E1C28B8DE9200DA6583 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31AE8E2428B8DE9200DA6583 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31AE8E2E28B8DE9200DA6583 /* KlioopUnsplashTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		31AE8E2B28B8DE9200DA6583 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 31AE8E1F28B8DE9200DA6583 /* KlioopUnsplash */;
+			targetProxy = 31AE8E2A28B8DE9200DA6583 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		31AE8E3028B8DE9200DA6583 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		31AE8E3128B8DE9200DA6583 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		31AE8E3328B8DE9200DA6583 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7DY6Z945T9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = klioop.KlioopUnsplash;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		31AE8E3428B8DE9200DA6583 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7DY6Z945T9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = klioop.KlioopUnsplash;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		31AE8E3628B8DE9200DA6583 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7DY6Z945T9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = klioop.KlioopUnsplashTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		31AE8E3728B8DE9200DA6583 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7DY6Z945T9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = klioop.KlioopUnsplashTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		31AE8E1A28B8DE9200DA6583 /* Build configuration list for PBXProject "KlioopUnsplash" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31AE8E3028B8DE9200DA6583 /* Debug */,
+				31AE8E3128B8DE9200DA6583 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31AE8E3228B8DE9200DA6583 /* Build configuration list for PBXNativeTarget "KlioopUnsplash" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31AE8E3328B8DE9200DA6583 /* Debug */,
+				31AE8E3428B8DE9200DA6583 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31AE8E3528B8DE9200DA6583 /* Build configuration list for PBXNativeTarget "KlioopUnsplashTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31AE8E3628B8DE9200DA6583 /* Debug */,
+				31AE8E3728B8DE9200DA6583 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 31AE8E1728B8DE9200DA6583 /* Project object */;
+}
