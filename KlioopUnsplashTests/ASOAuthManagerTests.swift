@@ -21,7 +21,7 @@ class ASOAuthManager {
         self.context = context
     }
     
-    var result: Result<Token, Error>? = nil
+    private lazy var result: Result<Token, Error> = .failure(.authenticationError)
     
     enum Error: Swift.Error {
         case authenticationError
@@ -33,16 +33,20 @@ class ASOAuthManager {
         completion(result)
     }
     
-    func exchangeToken(with callbackURL: URL?, error: Swift.Error?) {
-        guard error != nil, let url = callbackURL else { return failure() }
+    func exchangeToken(from callbackURL: URL?, error: Swift.Error?) {
+        guard error == nil, let url = callbackURL else { return failure() }
         
-//        let query = URLComponents(string: url.absoluteString)?.queryItems
-//        let tokenString = query?.filter { $0.name == "token" }.first?.value
-//        completion(.success(Token(accessToken: tokenString!)))
+        let query = URLComponents(string: url.absoluteString)?.queryItems
+        let tokenString = query?.filter { $0.name == "token" }.first?.value
+        token(from: tokenString!)
     }
     
     private func failure() {
         result = .failure(Error.authenticationError)
+    }
+    
+    private func token(from tokenString: String) {
+        result = .success(Token(accessToken: tokenString))
     }
 }
 
@@ -64,12 +68,34 @@ class ASOAuthManagerTests: XCTestCase {
         XCTAssertEqual(session.startCount, 1)
     }
     
-    func test_exchangeToken_deliversError() {
-        let sut = makeSUT()
+    func test_loadToken_deliversError() {
+        let (sut, _) = makeSUT()
         
-        sut.exchangeToken(with: nil, error: anyNSError())
+        sut.exchangeToken(from: anyURL(), error: anyNSError())
         
-        XCTAssertThrowsError(try sut.result?.get())
+        var receivedError: Error?
+        sut.loadToken { result in
+            if case let .failure(error) = result {
+                receivedError = error
+            }
+        }
+        
+        XCTAssertNotNil(receivedError)
+    }
+    
+    func test_loadToken_deliversToken() {
+        let (sut, _) = makeSUT()
+        let token = "a-token"
+        let callbackURL = URL(string: "https://auth?token=\(token)")!
+
+        sut.exchangeToken(from: callbackURL, error: nil)
+        
+        var receivedToken: Token?
+        sut.loadToken { result in
+            receivedToken = try? result.get()
+        }
+
+        XCTAssertEqual(receivedToken?.accessToken, token)
     }
     
     private func makeSUT(
@@ -95,6 +121,12 @@ class ASOAuthManagerTests: XCTestCase {
     
     private func anyNSError() -> NSError {
         NSError(domain: "any error", code: 0)
+    }
+    
+    private class ContextMock: NSObject, ASWebAuthenticationPresentationContextProviding {
+        func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+            NSWindow()
+        }
     }
     
     private class ASWebAuthenticationSessionMock: ASWebAuthenticationSession {
