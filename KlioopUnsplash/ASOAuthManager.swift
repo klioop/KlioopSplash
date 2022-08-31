@@ -15,9 +15,9 @@ public struct Token {
 public class ASOAuthManager {
     public var session: ASWebAuthenticationSession?
     
-    public var context: ASWebAuthenticationPresentationContextProviding?
+    public let context: ASWebAuthenticationPresentationContextProviding
     
-    public init(context: ASWebAuthenticationPresentationContextProviding?) {
+    public init(context: ASWebAuthenticationPresentationContextProviding) {
         self.context = context
     }
     

@@ -12,7 +12,7 @@ import KlioopUnsplash
 class ASOAuthManagerTests: XCTestCase {
     
     func test_loadToken_providesTheContextToTheSession() {
-        let (sut, session) = makeSUT(context: ContextMock())
+        let (sut, session) = makeSUT()
         
         sut.loadToken { _ in }
         
@@ -58,7 +58,7 @@ class ASOAuthManagerTests: XCTestCase {
     }
     
     private func makeSUT(
-        context: ASWebAuthenticationPresentationContextProviding? = nil
+        context: ASWebAuthenticationPresentationContextProviding = ContextMock()
     ) -> (sut: ASOAuthManager, session: ASWebAuthenticationSessionMock) {
         let session = ASWebAuthenticationSessionMock()
         let sut = ASOAuthManager(context: context)
