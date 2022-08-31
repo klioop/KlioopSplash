@@ -8,7 +8,7 @@
 import Foundation
 import AuthenticationServices
 
-public class ASOAuthManager {
+public class ASOAuthManager: OAuthManager {
     public var session: ASWebAuthenticationSession?
     
     public let context: ASWebAuthenticationPresentationContextProviding
@@ -17,13 +17,13 @@ public class ASOAuthManager {
         self.context = context
     }
     
-    private lazy var result: Result<Token, Error> = .failure(.authenticationError)
+    private lazy var result: OAuthManager.Result = .failure(Error.authenticationError)
     
     public enum Error: Swift.Error {
         case authenticationError
     }
     
-    public func loadToken(completion: @escaping (Result<Token, Error>) -> Void) {
+    public func loadToken(completion: @escaping (OAuthManager.Result) -> Void) {
         session?.presentationContextProvider = context
         session?.start()
         completion(result)
