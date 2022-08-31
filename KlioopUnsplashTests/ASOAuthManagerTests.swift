@@ -28,6 +28,7 @@ class ASOAuthManager {
     }
     
     func loadToken(completion: @escaping (Result<Token, Error>) -> Void) {
+        session?.presentationContextProvider = context
         session?.start()
         completion(result)
     }
@@ -47,16 +48,16 @@ class ASOAuthManager {
 
 class ASOAuthManagerTests: XCTestCase {
     
-    func test_init() {
-        let sut = makeSUT()
+    func test_loadToken_providesTheContextToTheSession() {
+        let (sut, session) = makeSUT(context: ContextMock())
         
-        XCTAssertNil(sut.session)
+        sut.loadToken { _ in }
+        
+        XCTAssertNotNil(session.presentationContextProvider)
     }
     
     func test_loadToken_startsTheASSession() {
-        let sut = makeSUT()
-        let session = ASWebAuthenticationSessionMock()
-        sut.session = session
+        let (sut, session) = makeSUT()
         
         sut.loadToken { _ in }
         
@@ -73,10 +74,13 @@ class ASOAuthManagerTests: XCTestCase {
     
     private func makeSUT(
         context: ASWebAuthenticationPresentationContextProviding? = nil
-    ) -> ASOAuthManager {
+    ) -> (sut: ASOAuthManager, session: ASWebAuthenticationSessionMock) {
+        let session = ASWebAuthenticationSessionMock()
         let sut = ASOAuthManager(context: context)
+        sut.session = session
+        trackMemoryLeak(session)
         trackMemoryLeak(sut)
-        return sut
+        return (sut, session)
     }
     
     private func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
