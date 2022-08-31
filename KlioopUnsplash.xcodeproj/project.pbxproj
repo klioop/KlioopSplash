@@ -10,6 +10,7 @@
 		31AE8E2928B8DE9200DA6583 /* KlioopUnsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */; };
 		31AE8E5428BF548600DA6583 /* ASOAuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */; };
 		31AE8E5628BF966C00DA6583 /* ASOAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */; };
+		31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 		31AE8E2828B8DE9200DA6583 /* KlioopUnsplashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlioopUnsplashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASOAuthManagerTests.swift; sourceTree = "<group>"; };
 		31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASOAuthManager.swift; sourceTree = "<group>"; };
+		31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExtractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +71,7 @@
 		31AE8E2228B8DE9200DA6583 /* KlioopUnsplash */ = {
 			isa = PBXGroup;
 			children = (
-				31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */,
+				31AE8E5928BF98E100DA6583 /* Splash Authentication */,
 			);
 			path = KlioopUnsplash;
 			sourceTree = "<group>";
@@ -80,6 +82,15 @@
 				31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */,
 			);
 			path = KlioopUnsplashTests;
+			sourceTree = "<group>";
+		};
+		31AE8E5928BF98E100DA6583 /* Splash Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */,
+				31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */,
+			);
+			path = "Splash Authentication";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */,
 				31AE8E5628BF966C00DA6583 /* ASOAuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,16 +36,14 @@ public class ASOAuthManager {
     public func exchangeToken(from callbackURL: URL?, error: Swift.Error?) {
         guard error == nil, let url = callbackURL else { return failure() }
         
-        let query = URLComponents(string: url.absoluteString)?.queryItems
-        let tokenString = query?.filter { $0.name == "token" }.first?.value
-        token(from: tokenString!)
+        success(with: TokenExtractor.extractToken(from: url))
     }
     
     private func failure() {
         result = .failure(Error.authenticationError)
     }
     
-    private func token(from tokenString: String) {
-        result = .success(Token(accessToken: tokenString))
+    private func success(with token: Token) {
+        result = .success(token)
     }
 }
