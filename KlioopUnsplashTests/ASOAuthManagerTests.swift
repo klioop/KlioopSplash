@@ -7,48 +7,7 @@
 
 import XCTest
 import AuthenticationServices
-
-struct Token {
-    let accessToken: String
-}
-
-class ASOAuthManager {
-    var session: ASWebAuthenticationSession?
-    
-    var context: ASWebAuthenticationPresentationContextProviding?
-    
-    init(context: ASWebAuthenticationPresentationContextProviding?) {
-        self.context = context
-    }
-    
-    private lazy var result: Result<Token, Error> = .failure(.authenticationError)
-    
-    enum Error: Swift.Error {
-        case authenticationError
-    }
-    
-    func loadToken(completion: @escaping (Result<Token, Error>) -> Void) {
-        session?.presentationContextProvider = context
-        session?.start()
-        completion(result)
-    }
-    
-    func exchangeToken(from callbackURL: URL?, error: Swift.Error?) {
-        guard error == nil, let url = callbackURL else { return failure() }
-        
-        let query = URLComponents(string: url.absoluteString)?.queryItems
-        let tokenString = query?.filter { $0.name == "token" }.first?.value
-        token(from: tokenString!)
-    }
-    
-    private func failure() {
-        result = .failure(Error.authenticationError)
-    }
-    
-    private func token(from tokenString: String) {
-        result = .success(Token(accessToken: tokenString))
-    }
-}
+import KlioopUnsplash
 
 class ASOAuthManagerTests: XCTestCase {
     

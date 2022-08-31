@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		31AE8E2928B8DE9200DA6583 /* KlioopUnsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */; };
 		31AE8E5428BF548600DA6583 /* ASOAuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */; };
+		31AE8E5628BF966C00DA6583 /* ASOAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +26,7 @@
 		31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KlioopUnsplash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31AE8E2828B8DE9200DA6583 /* KlioopUnsplashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlioopUnsplashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASOAuthManagerTests.swift; sourceTree = "<group>"; };
+		31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASOAuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		31AE8E2228B8DE9200DA6583 /* KlioopUnsplash */ = {
 			isa = PBXGroup;
 			children = (
+				31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */,
 			);
 			path = KlioopUnsplash;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 				TargetAttributes = {
 					31AE8E1F28B8DE9200DA6583 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 					};
 					31AE8E2728B8DE9200DA6583 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -187,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AE8E5628BF966C00DA6583 /* ASOAuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +336,7 @@
 		31AE8E3328B8DE9200DA6583 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -352,6 +358,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -359,6 +366,7 @@
 		31AE8E3428B8DE9200DA6583 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -387,6 +395,7 @@
 		31AE8E3628B8DE9200DA6583 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7DY6Z945T9;
@@ -402,6 +411,7 @@
 		31AE8E3728B8DE9200DA6583 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7DY6Z945T9;
