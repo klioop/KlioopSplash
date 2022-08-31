@@ -14,6 +14,10 @@ class ASOAuthManager {
     init(session: ASWebAuthenticationSession) {
         self.session = session
     }
+    
+    func loadToken() {
+        session.start()
+    }
 }
 
 class ASOAuthManagerTests: XCTestCase {
@@ -24,18 +28,17 @@ class ASOAuthManagerTests: XCTestCase {
         XCTAssertEqual(session.startCount, 0)
     }
     
-    private class ASWebAuthenticationSessionSPY: ASWebAuthenticationSession {
-        private(set) var startCount = 0
+    func test_loadToken_startsTheSession() {
+        let (sut, session) = makeSUT()
         
-        override func start() -> Bool {
-            super.start()
-            startCount += 1
-            return true
-        }
+        sut.loadToken()
+        sut.loadToken()
+        
+        XCTAssertEqual(session.startCount, 2)
     }
     
     private func makeSUT(
-        url: URL = URL(string: "http://any-url.com")!,
+        url: URL = URL(string: "https://any-url.com")!,
         scheme: String? = nil,
         completion: @escaping (URL?, Error?) -> Void = { _, _ in }
     ) -> (sut: ASOAuthManager, session: ASWebAuthenticationSessionSPY) {
@@ -54,5 +57,14 @@ class ASOAuthManagerTests: XCTestCase {
     
     private func anyURL() -> URL {
         URL(string: "http://any-url.com")!
+    }
+    
+    private class ASWebAuthenticationSessionSPY: ASWebAuthenticationSession {
+        private(set) var startCount = 0
+        
+        override func start() -> Bool {
+            startCount += 1
+            return true
+        }
     }
 }
