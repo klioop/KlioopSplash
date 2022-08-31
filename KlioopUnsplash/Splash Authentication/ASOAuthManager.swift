@@ -8,10 +8,6 @@
 import Foundation
 import AuthenticationServices
 
-public struct Token {
-    public let accessToken: String
-}
-
 public class ASOAuthManager {
     public var session: ASWebAuthenticationSession?
     

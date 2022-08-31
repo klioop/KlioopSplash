@@ -11,6 +11,7 @@
 		31AE8E5428BF548600DA6583 /* ASOAuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */; };
 		31AE8E5628BF966C00DA6583 /* ASOAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */; };
 		31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */; };
+		31AE8E5B28BF992800DA6583 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5A28BF992800DA6583 /* Token.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASOAuthManagerTests.swift; sourceTree = "<group>"; };
 		31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASOAuthManager.swift; sourceTree = "<group>"; };
 		31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExtractor.swift; sourceTree = "<group>"; };
+		31AE8E5A28BF992800DA6583 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */,
 				31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */,
+				31AE8E5A28BF992800DA6583 /* Token.swift */,
 			);
 			path = "Splash Authentication";
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AE8E5B28BF992800DA6583 /* Token.swift in Sources */,
 				31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */,
 				31AE8E5628BF966C00DA6583 /* ASOAuthManager.swift in Sources */,
 			);
