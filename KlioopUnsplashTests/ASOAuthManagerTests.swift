@@ -19,8 +19,7 @@ class ASOAuthManager {
 class ASOAuthManagerTests: XCTestCase {
     
     func test_init_doesNotStartAuthenticationSession() {
-        let session = ASWebAuthenticationSessionSPY(url: URL(string: "any")!, callbackURLScheme: nil) { _, _ in }
-        _ = ASOAuthManager(session: session)
+        let (_, session) = makeSUT()
         
         XCTAssertEqual(session.startCount, 0)
     }
@@ -33,5 +32,27 @@ class ASOAuthManagerTests: XCTestCase {
             startCount += 1
             return true
         }
+    }
+    
+    private func makeSUT(
+        url: URL = URL(string: "http://any-url.com")!,
+        scheme: String? = nil,
+        completion: @escaping (URL?, Error?) -> Void = { _, _ in }
+    ) -> (sut: ASOAuthManager, session: ASWebAuthenticationSessionSPY) {
+        let session = ASWebAuthenticationSessionSPY(url: url, callbackURLScheme: scheme, completionHandler: completion)
+        let sut = ASOAuthManager(session: session)
+        trackMemoryLeak(session)
+        trackMemoryLeak(sut)
+        return (sut, session)
+    }
+    
+    private func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should be deallocated. Potential memory leak", file: file, line: line)
+        }
+    }
+    
+    private func anyURL() -> URL {
+        URL(string: "http://any-url.com")!
     }
 }
