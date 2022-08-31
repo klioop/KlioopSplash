@@ -28,6 +28,8 @@ class ASOAuthManager {
     }
     
     func loadToken(completion: @escaping (Result<Token, Error>) -> Void) {
+        session?.start()
+        completion(result)
     }
     
     func exchangeToken(with callbackURL: URL?, error: Swift.Error?) {
@@ -48,8 +50,17 @@ class ASOAuthManagerTests: XCTestCase {
     func test_init() {
         let sut = makeSUT()
         
-        XCTAssertNil(sut.result)
         XCTAssertNil(sut.session)
+    }
+    
+    func test_loadToken_startsTheASSession() {
+        let sut = makeSUT()
+        let session = ASWebAuthenticationSessionMock()
+        sut.session = session
+        
+        sut.loadToken { _ in }
+        
+        XCTAssertEqual(session.startCount, 1)
     }
     
     func test_exchangeToken_deliversError() {
@@ -80,5 +91,18 @@ class ASOAuthManagerTests: XCTestCase {
     
     private func anyNSError() -> NSError {
         NSError(domain: "any error", code: 0)
+    }
+    
+    private class ASWebAuthenticationSessionMock: ASWebAuthenticationSession {
+        var startCount = 0
+        
+        override func start() -> Bool {
+            startCount += 1
+            return true
+        }
+        
+        convenience init() {
+            self.init(url: URL(string: "http://any-url.com")!, callbackURLScheme: nil) { _, _ in }
+        }
     }
 }
