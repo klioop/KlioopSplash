@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31AE8E2928B8DE9200DA6583 /* KlioopUnsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */; };
-		31AE8E2E28B8DE9200DA6583 /* KlioopUnsplashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E2D28B8DE9200DA6583 /* KlioopUnsplashTests.swift */; };
-		31AE8E2F28B8DE9200DA6583 /* KlioopUnsplash.h in Headers */ = {isa = PBXBuildFile; fileRef = 31AE8E2328B8DE9200DA6583 /* KlioopUnsplash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31AE8E5428BF548600DA6583 /* ASOAuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,9 +23,8 @@
 
 /* Begin PBXFileReference section */
 		31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KlioopUnsplash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		31AE8E2328B8DE9200DA6583 /* KlioopUnsplash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KlioopUnsplash.h; sourceTree = "<group>"; };
 		31AE8E2828B8DE9200DA6583 /* KlioopUnsplashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlioopUnsplashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		31AE8E2D28B8DE9200DA6583 /* KlioopUnsplashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlioopUnsplashTests.swift; sourceTree = "<group>"; };
+		31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASOAuthManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +67,6 @@
 		31AE8E2228B8DE9200DA6583 /* KlioopUnsplash */ = {
 			isa = PBXGroup;
 			children = (
-				31AE8E2328B8DE9200DA6583 /* KlioopUnsplash.h */,
 			);
 			path = KlioopUnsplash;
 			sourceTree = "<group>";
@@ -77,7 +74,7 @@
 		31AE8E2C28B8DE9200DA6583 /* KlioopUnsplashTests */ = {
 			isa = PBXGroup;
 			children = (
-				31AE8E2D28B8DE9200DA6583 /* KlioopUnsplashTests.swift */,
+				31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */,
 			);
 			path = KlioopUnsplashTests;
 			sourceTree = "<group>";
@@ -89,7 +86,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31AE8E2F28B8DE9200DA6583 /* KlioopUnsplash.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31AE8E2E28B8DE9200DA6583 /* KlioopUnsplashTests.swift in Sources */,
+				31AE8E5428BF548600DA6583 /* ASOAuthManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
