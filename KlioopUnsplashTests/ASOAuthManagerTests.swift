@@ -8,45 +8,64 @@
 import XCTest
 import AuthenticationServices
 
+struct Token {
+    let accessToken: String
+}
+
 class ASOAuthManager {
-    let session: ASWebAuthenticationSession
+    var session: ASWebAuthenticationSession?
     
-    init(session: ASWebAuthenticationSession) {
-        self.session = session
+    var context: ASWebAuthenticationPresentationContextProviding?
+    
+    init(context: ASWebAuthenticationPresentationContextProviding?) {
+        self.context = context
     }
     
-    func loadToken() {
-        session.start()
+    var result: Result<Token, Error>? = nil
+    
+    enum Error: Swift.Error {
+        case authenticationError
+    }
+    
+    func loadToken(completion: @escaping (Result<Token, Error>) -> Void) {
+    }
+    
+    func exchangeToken(with callbackURL: URL?, error: Swift.Error?) {
+        guard error != nil, let url = callbackURL else { return failure() }
+        
+//        let query = URLComponents(string: url.absoluteString)?.queryItems
+//        let tokenString = query?.filter { $0.name == "token" }.first?.value
+//        completion(.success(Token(accessToken: tokenString!)))
+    }
+    
+    private func failure() {
+        result = .failure(Error.authenticationError)
     }
 }
 
 class ASOAuthManagerTests: XCTestCase {
     
-    func test_init_doesNotStartAuthenticationSession() {
-        let (_, session) = makeSUT()
+    func test_init() {
+        let sut = makeSUT()
         
-        XCTAssertEqual(session.startCount, 0)
+        XCTAssertNil(sut.result)
+        XCTAssertNil(sut.session)
     }
     
-    func test_loadToken_startsTheSession() {
-        let (sut, session) = makeSUT()
+    func test_exchangeToken_deliversError() {
+        let sut = makeSUT()
         
-        sut.loadToken()
-        sut.loadToken()
+        sut.exchangeToken(with: nil, error: anyNSError())
         
-        XCTAssertEqual(session.startCount, 2)
+        XCTAssertThrowsError(try sut.result?.get())
     }
     
     private func makeSUT(
-        url: URL = URL(string: "https://any-url.com")!,
-        scheme: String? = nil,
-        completion: @escaping (URL?, Error?) -> Void = { _, _ in }
-    ) -> (sut: ASOAuthManager, session: ASWebAuthenticationSessionSPY) {
-        let session = ASWebAuthenticationSessionSPY(url: url, callbackURLScheme: scheme, completionHandler: completion)
-        let sut = ASOAuthManager(session: session)
-        trackMemoryLeak(session)
+        context: ASWebAuthenticationPresentationContextProviding? = nil
+    ) -> ASOAuthManager {
+        let sut = ASOAuthManager(context: context)
         trackMemoryLeak(sut)
-        return (sut, session)
+        return sut
     }
     
     private func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
@@ -59,12 +78,7 @@ class ASOAuthManagerTests: XCTestCase {
         URL(string: "http://any-url.com")!
     }
     
-    private class ASWebAuthenticationSessionSPY: ASWebAuthenticationSession {
-        private(set) var startCount = 0
-        
-        override func start() -> Bool {
-            startCount += 1
-            return true
-        }
+    private func anyNSError() -> NSError {
+        NSError(domain: "any error", code: 0)
     }
 }
