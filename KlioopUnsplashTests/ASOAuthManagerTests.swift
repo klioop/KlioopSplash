@@ -26,7 +26,7 @@ class ASOAuthManagerTests: XCTestCase {
     }
     
     private func makeSUT(
-        url: URL = URL(string: "any")!,
+        url: URL = anyURL(),
         scheme: String = "a scheme",
         context: ASWebAuthenticationPresentationContextProviding = ContextMock()
     ) -> ASOAuthManager {
@@ -35,7 +35,7 @@ class ASOAuthManagerTests: XCTestCase {
         return sut
     }
     
-    private func expect(_ sut: ASOAuthManager, toCompletedWith expectedResult: OAuthManager.Result, for url: URL? = nil, with error: Error? = nil, file: StaticString = #filePath, line: UInt = #line) {
+    private func expect(_ sut: ASOAuthManager, toCompletedWith expectedResult: OAuthManager.Result, for url: URL? = anyURL(), with error: Error? = nil, file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "wait for completion")
         
         let completion = sut.exchangeToken { receivedResult in
@@ -61,14 +61,6 @@ class ASOAuthManagerTests: XCTestCase {
         addTeardownBlock { [weak instance] in
             XCTAssertNil(instance, "Instance should be deallocated. Potential memory leak", file: file, line: line)
         }
-    }
-    
-    private func anyURL() -> URL {
-        URL(string: "http://any-url.com")!
-    }
-    
-    private func anyNSError() -> NSError {
-        NSError(domain: "any error", code: 0)
     }
     
     private class ContextMock: NSObject, ASWebAuthenticationPresentationContextProviding {

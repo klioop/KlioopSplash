@@ -13,6 +13,7 @@
 		31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */; };
 		31AE8E5B28BF992800DA6583 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5A28BF992800DA6583 /* Token.swift */; };
 		31AE8E5D28BF997200DA6583 /* OAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5C28BF997200DA6583 /* OAuthManager.swift */; };
+		31AE8E5F28C0ADC500DA6583 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5E28C0ADC500DA6583 /* TestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExtractor.swift; sourceTree = "<group>"; };
 		31AE8E5A28BF992800DA6583 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		31AE8E5C28BF997200DA6583 /* OAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthManager.swift; sourceTree = "<group>"; };
+		31AE8E5E28C0ADC500DA6583 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */,
+				31AE8E5E28C0ADC500DA6583 /* TestHelpers.swift */,
 			);
 			path = KlioopUnsplashTests;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31AE8E5428BF548600DA6583 /* ASOAuthManagerTests.swift in Sources */,
+				31AE8E5F28C0ADC500DA6583 /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
