@@ -11,58 +11,41 @@ import KlioopUnsplash
 
 class ASOAuthManagerTests: XCTestCase {
     
-    func test_loadToken_providesTheContextToTheSession() {
-        let (sut, session) = makeSUT()
-        
-        sut.loadToken { _ in }
-        
-        XCTAssertNotNil(session.presentationContextProvider)
-    }
-    
-    func test_loadToken_startsTheASSession() {
-        let (sut, session) = makeSUT()
-        
-        sut.loadToken { _ in }
-        
-        XCTAssertEqual(session.startCount, 1)
-    }
-    
     func test_loadToken_deliversError() {
         let (sut, _) = makeSUT()
         
-        sut.exchangeToken(from: anyURL(), error: anyNSError())
-        
         var receivedError: Error?
-        sut.loadToken { result in
-            if case let .failure(error) = result {
-                receivedError = error
-            }
+        let sessionCompletion = sut.exchangeToken { result in
+            if case let .failure(error) = result { receivedError = error }
         }
+        
+        sessionCompletion(anyURL(), anyNSError())
         
         XCTAssertNotNil(receivedError)
     }
     
     func test_loadToken_deliversToken() {
-        let (sut, _) = makeSUT()
         let token = "a-token"
         let callbackURL = URL(string: "https://auth?token=\(token)")!
-
-        sut.exchangeToken(from: callbackURL, error: nil)
+        let (sut, _) = makeSUT(url: callbackURL)
         
         var receivedToken: Token?
-        sut.loadToken { result in
+        let sessionCompletion = sut.exchangeToken { result in
             receivedToken = try? result.get()
         }
-
+        
+        sessionCompletion(callbackURL, nil)
+        
         XCTAssertEqual(receivedToken?.accessToken, token)
     }
     
     private func makeSUT(
+        url: URL = URL(string: "any")!,
+        scheme: String = "a scheme",
         context: ASWebAuthenticationPresentationContextProviding = ContextMock()
     ) -> (sut: ASOAuthManager, session: ASWebAuthenticationSessionMock) {
         let session = ASWebAuthenticationSessionMock()
-        let sut = ASOAuthManager(context: context)
-        sut.session = session
+        let sut = ASOAuthManager(authURL: url, scheme: scheme, context: context)
         trackMemoryLeak(session)
         trackMemoryLeak(sut)
         return (sut, session)

@@ -9,37 +9,41 @@ import Foundation
 import AuthenticationServices
 
 public final class ASOAuthManager: OAuthManager {
-    public var session: ASWebAuthenticationSession?
+    private let authURL: URL
+    private let scheme: String
+    private let context: ASWebAuthenticationPresentationContextProviding
     
-    public let context: ASWebAuthenticationPresentationContextProviding
-    
-    public init(context: ASWebAuthenticationPresentationContextProviding) {
+    public init(authURL: URL, scheme: String, context: ASWebAuthenticationPresentationContextProviding) {
+        self.authURL = authURL
+        self.scheme = scheme
         self.context = context
     }
-    
-    private lazy var result: OAuthManager.Result = .failure(Error.authenticationError)
     
     public enum Error: Swift.Error {
         case authenticationError
     }
     
     public func loadToken(completion: @escaping (OAuthManager.Result) -> Void) {
-        session?.presentationContextProvider = context
-        session?.start()
-        completion(result)
+        let session = session(completion: completion)
+        session.presentationContextProvider = context
+        session.start()
     }
     
-    public func exchangeToken(from callbackURL: URL?, error: Swift.Error?) {
-        guard error == nil, let url = callbackURL else { return failure() }
+    public func exchangeToken(completion: @escaping (OAuthManager.Result) -> Void) -> (URL?, Swift.Error?) -> Void {
+        return { callbackURL, error in
+            guard error == nil, let url = callbackURL else { return completion(.failure(Error.authenticationError)) }
         
-        success(with: TokenExtractor.extractToken(from: url))
+            let token = TokenExtractor.extractToken(from: url)
+            completion(.success(token))
+        }
     }
     
-    private func failure() {
-        result = .failure(Error.authenticationError)
-    }
-    
-    private func success(with token: Token) {
-        result = .success(token)
+    private func session(completion: @escaping (OAuthManager.Result) -> Void) -> ASWebAuthenticationSession {
+        ASWebAuthenticationSession(
+           url: authURL,
+           callbackURLScheme: scheme,
+           completionHandler: exchangeToken {
+               completion($0)
+       })
     }
 }
