@@ -12,7 +12,7 @@ import KlioopUnsplash
 class ASOAuthManagerTests: XCTestCase {
     
     func test_loadToken_deliversError() {
-        let (sut, _) = makeSUT()
+        let sut = makeSUT()
         
         var receivedError: Error?
         let sessionCompletion = sut.exchangeToken { result in
@@ -27,7 +27,7 @@ class ASOAuthManagerTests: XCTestCase {
     func test_loadToken_deliversToken() {
         let token = "a-token"
         let callbackURL = URL(string: "https://auth?token=\(token)")!
-        let (sut, _) = makeSUT(url: callbackURL)
+        let sut = makeSUT(url: callbackURL)
         
         var receivedToken: Token?
         let sessionCompletion = sut.exchangeToken { result in
@@ -43,12 +43,10 @@ class ASOAuthManagerTests: XCTestCase {
         url: URL = URL(string: "any")!,
         scheme: String = "a scheme",
         context: ASWebAuthenticationPresentationContextProviding = ContextMock()
-    ) -> (sut: ASOAuthManager, session: ASWebAuthenticationSessionMock) {
-        let session = ASWebAuthenticationSessionMock()
+    ) -> ASOAuthManager {
         let sut = ASOAuthManager(authURL: url, scheme: scheme, context: context)
-        trackMemoryLeak(session)
         trackMemoryLeak(sut)
-        return (sut, session)
+        return sut
     }
     
     private func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
@@ -68,19 +66,6 @@ class ASOAuthManagerTests: XCTestCase {
     private class ContextMock: NSObject, ASWebAuthenticationPresentationContextProviding {
         func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
             NSWindow()
-        }
-    }
-    
-    private class ASWebAuthenticationSessionMock: ASWebAuthenticationSession {
-        var startCount = 0
-        
-        override func start() -> Bool {
-            startCount += 1
-            return true
-        }
-        
-        convenience init() {
-            self.init(url: URL(string: "http://any-url.com")!, callbackURLScheme: nil) { _, _ in }
         }
     }
 }
