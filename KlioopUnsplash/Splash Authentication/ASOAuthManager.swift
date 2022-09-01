@@ -24,7 +24,7 @@ public final class ASOAuthManager: OAuthManager {
     }
     
     public func loadToken(completion: @escaping (OAuthManager.Result) -> Void) {
-        let session = session(completion: completion)
+        let session = asWebSession(completion: completion)
         session.presentationContextProvider = context
         session.start()
     }
@@ -40,7 +40,7 @@ public final class ASOAuthManager: OAuthManager {
         }
     }
     
-    private func session(completion: @escaping (OAuthManager.Result) -> Void) -> ASWebAuthenticationSession {
+    private func asWebSession(completion: @escaping (OAuthManager.Result) -> Void) -> ASWebAuthenticationSession {
         ASWebAuthenticationSession(
             url: authURL,
             callbackURLScheme: scheme,
