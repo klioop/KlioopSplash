@@ -14,14 +14,7 @@ class ASOAuthManagerTests: XCTestCase {
     func test_loadToken_deliversError() {
         let sut = makeSUT()
         
-        var receivedError: Error?
-        let sessionCompletion = sut.exchangeToken { result in
-            if case let .failure(error) = result { receivedError = error }
-        }
-        
-        sessionCompletion(anyURL(), anyNSError())
-        
-        XCTAssertNotNil(receivedError)
+        expect(sut, toCompletedWith: .failure(anyNSError()), with: anyNSError())
     }
     
     func test_loadToken_deliversToken() {
@@ -29,14 +22,7 @@ class ASOAuthManagerTests: XCTestCase {
         let callbackURL = URL(string: "https://auth?token=\(token)")!
         let sut = makeSUT(url: callbackURL)
         
-        var receivedToken: Token?
-        let sessionCompletion = sut.exchangeToken { result in
-            receivedToken = try? result.get()
-        }
-        
-        sessionCompletion(callbackURL, nil)
-        
-        XCTAssertEqual(receivedToken?.accessToken, token)
+        expect(sut, toCompletedWith: .success(Token(accessToken: token)), for: callbackURL)
     }
     
     private func makeSUT(
@@ -47,6 +33,28 @@ class ASOAuthManagerTests: XCTestCase {
         let sut = ASOAuthManager(authURL: url, scheme: scheme, context: context)
         trackMemoryLeak(sut)
         return sut
+    }
+    
+    private func expect(_ sut: ASOAuthManager, toCompletedWith expectedResult: OAuthManager.Result, for url: URL? = nil, with error: Error? = nil, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "wait for completion")
+        
+        let completion = sut.exchangeToken { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.failure(receivedError), .failure):
+                XCTAssertNotNil(receivedError, file: file, line: line)
+                
+            case let (.success(receivedToken), .success(expectedToken)):
+                XCTAssertEqual(receivedToken.accessToken, expectedToken.accessToken, file: file, line: line)
+                
+            default:
+                XCTFail("Expected \(expectedResult) got \(receivedResult) instead", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        
+        completion(url, error)
+        
+        waitForExpectations(timeout: 1.0)
     }
     
     private func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
