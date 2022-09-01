@@ -31,8 +31,11 @@ public final class ASOAuthManager: OAuthManager {
     
     public func exchangeToken(completion: @escaping (OAuthManager.Result) -> Void) -> (URL?, Swift.Error?) -> Void {
         return { callbackURL, error in
-            guard error == nil, let url = callbackURL else { return completion(.failure(Error.authenticationError)) }
-        
+            guard
+                error == nil,
+                let url = callbackURL
+            else { return completion(.failure(Error.authenticationError)) }
+            
             let token = TokenExtractor.extractToken(from: url)
             completion(.success(token))
         }
@@ -40,10 +43,8 @@ public final class ASOAuthManager: OAuthManager {
     
     private func session(completion: @escaping (OAuthManager.Result) -> Void) -> ASWebAuthenticationSession {
         ASWebAuthenticationSession(
-           url: authURL,
-           callbackURLScheme: scheme,
-           completionHandler: exchangeToken {
-               completion($0)
-       })
+            url: authURL,
+            callbackURLScheme: scheme,
+            completionHandler: exchangeToken(completion: completion))
     }
 }
