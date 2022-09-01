@@ -8,7 +8,7 @@
 import Foundation
 import AuthenticationServices
 
-public class ASOAuthManager: OAuthManager {
+public final class ASOAuthManager: OAuthManager {
     public var session: ASWebAuthenticationSession?
     
     public let context: ASWebAuthenticationPresentationContextProviding
