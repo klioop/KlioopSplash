@@ -57,12 +57,6 @@ class ASOAuthManagerTests: XCTestCase {
         waitForExpectations(timeout: 1.0)
     }
     
-    private func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, "Instance should be deallocated. Potential memory leak", file: file, line: line)
-        }
-    }
-    
     private class ContextMock: NSObject, ASWebAuthenticationPresentationContextProviding {
         func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
             NSWindow()
