@@ -36,8 +36,7 @@ public final class ASOAuthManager: OAuthManager {
                 let url = callbackURL
             else { return completion(.failure(Error.authenticationError)) }
             
-            let token = TokenExtractor.extractToken(from: url)
-            completion(.success(token))
+            completion(.success(TokenExtractor.extractToken(from: url)))
         }
     }
     
