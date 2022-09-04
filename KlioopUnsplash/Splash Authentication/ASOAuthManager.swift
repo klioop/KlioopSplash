@@ -9,14 +9,10 @@ import Foundation
 import AuthenticationServices
 
 public final class ASOAuthManager: OAuthManager {
-    private let authURL: URL
-    private let scheme: String
-    private let context: ASWebAuthenticationPresentationContextProviding
+    private let sessionFactory: ASWebSessionFactory
     
-    public init(authURL: URL, scheme: String, context: ASWebAuthenticationPresentationContextProviding) {
-        self.authURL = authURL
-        self.scheme = scheme
-        self.context = context
+    public init(factory: ASWebSessionFactory) {
+        self.sessionFactory = factory
     }
     
     public enum Error: Swift.Error {
@@ -24,8 +20,7 @@ public final class ASOAuthManager: OAuthManager {
     }
     
     public func loadToken(completion: @escaping (OAuthManager.Result) -> Void) {
-        let session = asWebSession(completion: completion)
-        session.presentationContextProvider = context
+        let session = sessionFactory.asWebSession(completion: exchangeToken(completion: completion))
         session.start()
     }
     
@@ -38,12 +33,5 @@ public final class ASOAuthManager: OAuthManager {
             
             completion(.success(TokenExtractor.extractToken(from: url)))
         }
-    }
-    
-    private func asWebSession(completion: @escaping (OAuthManager.Result) -> Void) -> ASWebAuthenticationSession {
-        ASWebAuthenticationSession(
-            url: authURL,
-            callbackURLScheme: scheme,
-            completionHandler: exchangeToken(completion: completion))
     }
 }

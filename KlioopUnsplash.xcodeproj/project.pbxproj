@@ -15,6 +15,7 @@
 		31AE8E5D28BF997200DA6583 /* OAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5C28BF997200DA6583 /* OAuthManager.swift */; };
 		31AE8E5F28C0ADC500DA6583 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5E28C0ADC500DA6583 /* TestHelpers.swift */; };
 		31AE8E6128C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E6028C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift */; };
+		31AE8E6528C4D6A000DA6583 /* ASWebSessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E6428C4D6A000DA6583 /* ASWebSessionFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		31AE8E5C28BF997200DA6583 /* OAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthManager.swift; sourceTree = "<group>"; };
 		31AE8E5E28C0ADC500DA6583 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		31AE8E6028C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+TrackMemoryLeak.swift"; sourceTree = "<group>"; };
+		31AE8E6428C4D6A000DA6583 /* ASWebSessionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWebSessionFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */,
 				31AE8E5A28BF992800DA6583 /* Token.swift */,
 				31AE8E5C28BF997200DA6583 /* OAuthManager.swift */,
+				31AE8E6428C4D6A000DA6583 /* ASWebSessionFactory.swift */,
 			);
 			path = "Splash Authentication";
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				31AE8E5B28BF992800DA6583 /* Token.swift in Sources */,
 				31AE8E5D28BF997200DA6583 /* OAuthManager.swift in Sources */,
 				31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */,
+				31AE8E6528C4D6A000DA6583 /* ASWebSessionFactory.swift in Sources */,
 				31AE8E5628BF966C00DA6583 /* ASOAuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
