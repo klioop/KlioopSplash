@@ -20,7 +20,7 @@ public final class ASOAuthManager: OAuthManager {
     }
     
     public func loadToken(completion: @escaping (OAuthManager.Result) -> Void) {
-        let session = sessionFactory.asWebSession(completion: exchangeToken(completion: completion))
+        let session = sessionFactory.asWebSession()
         session.start()
     }
     
