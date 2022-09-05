@@ -16,7 +16,7 @@ public final class ASOAuthManager: OAuthManager {
     }
     
     public enum Error: Swift.Error {
-        case authenticationError
+        case failedToAuthenticate
     }
     
     public func loadToken(completion: @escaping (OAuthManager.Result) -> Void) {
@@ -29,7 +29,7 @@ public final class ASOAuthManager: OAuthManager {
             guard
                 error == nil,
                 let url = callbackURL
-            else { return completion(.failure(Error.authenticationError)) }
+            else { return completion(.failure(Error.failedToAuthenticate)) }
             
             completion(.success(TokenExtractor.extractToken(from: url)))
         }
