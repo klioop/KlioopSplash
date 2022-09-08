@@ -8,7 +8,7 @@
 import Foundation
 import AuthenticationServices
 
-public final class ASOAuthManager: OAuthManager {
+public final class ASOAuthManager: TokenLoader {
     private let authURL: URL
     private let scheme: String?
     private let context: ASWebAuthenticationPresentationContextProviding
@@ -23,12 +23,12 @@ public final class ASOAuthManager: OAuthManager {
         case failedToAuthenticate
     }
     
-    public func loadToken(completion: @escaping (OAuthManager.Result) -> Void) {
+    public func loadToken(completion: @escaping (TokenLoader.Result) -> Void) {
         let session = asWebSession(completion: completion)
         session.start()
     }
     
-    public func exchangeToken(completion: @escaping (OAuthManager.Result) -> Void) -> (URL?, Swift.Error?) -> Void {
+    public func exchangeToken(completion: @escaping (TokenLoader.Result) -> Void) -> (URL?, Swift.Error?) -> Void {
         return { callbackURL, error in
             guard
                 error == nil,
@@ -39,7 +39,7 @@ public final class ASOAuthManager: OAuthManager {
         }
     }
     
-    private func asWebSession(completion: @escaping (OAuthManager.Result) -> Void) -> ASWebAuthenticationSession {
+    private func asWebSession(completion: @escaping (TokenLoader.Result) -> Void) -> ASWebAuthenticationSession {
         let session = ASWebAuthenticationSession(url: authURL, callbackURLScheme: scheme, completionHandler: self.exchangeToken(completion: completion))
         session.presentationContextProvider = context
         return session
