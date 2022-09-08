@@ -34,8 +34,7 @@ class ASOAuthManagerTests: XCTestCase {
         scheme: String = "a scheme",
         context: ASWebAuthenticationPresentationContextProviding = ContextMock()
     ) -> ASOAuthManager {
-        let factory = ASWebSessionFactory(authURL: url, scheme: scheme, context: context)
-        let sut = ASOAuthManager(factory: factory)
+        let sut = ASOAuthManager(authURL: url, scheme: scheme, context: context)
         trackMemoryLeak(sut)
         return sut
     }
