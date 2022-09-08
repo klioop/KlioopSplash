@@ -22,8 +22,12 @@ final class RemoteLoader {
         self.client = client
     }
     
-    func load() {
-        client.perform(request) { _ in }
+    func load(completion: @escaping (Result<Void, Error>) -> Void) {
+        client.perform(request) { result in
+            if case let .failure(error) = result {
+                completion(.failure(error))
+            }
+        }
     }
 }
 
@@ -39,9 +43,25 @@ class RemoteLoaderTests: XCTestCase {
         let url = URL(string: "http://a-given-url.io")!
         let (sut, client) = makeSUT(request: anyRequest(url: url))
         
-        sut.load()
+        sut.load() { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url])
+    }
+    
+    func test_load_deliversErrorOnFail() {
+        let (sut, client) = makeSUT()
+        let error = anyNSError()
+        
+        var receivedError: Error?
+        sut.load() {
+            if case let .failure(error) = $0 {
+                receivedError = error
+            }
+        }
+                        
+        client.completeLoading(with: error)
+        
+        XCTAssertEqual(receivedError as? NSError, error)
     }
     
     // MARK: - Helpers
@@ -56,6 +76,7 @@ class RemoteLoaderTests: XCTestCase {
     
     private class ClientSpy: HTTPClient {
         private var requestedRequests = [URLRequest]()
+        private var completions = [(HTTPClient.Result) -> Void]()
         
         var requestedURLs: [URL] {
             requestedRequests.map { $0.url! }
@@ -63,6 +84,11 @@ class RemoteLoaderTests: XCTestCase {
         
         func perform(_ request: URLRequest, completion: @escaping (HTTPClient.Result) -> Void) {
             requestedRequests.append(request)
+            completions.append(completion)
+        }
+        
+        func completeLoading(at index: Int = 0, with error: Error) {
+            completions[index](.failure(error))
         }
     }
     
