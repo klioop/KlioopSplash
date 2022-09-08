@@ -71,28 +71,6 @@ class ASOAuthManagerTests: XCTestCase {
         }
     }
     
-    private func expect(_ sut: ASOAuthManager, toCompletedWith expectedResult: OAuthManager.Result, for url: URL? = anyURL(), with error: Error? = nil, file: StaticString = #filePath, line: UInt = #line) {
-        let exp = expectation(description: "wait for completion")
-        
-        let completion = sut.exchangeToken { receivedResult in
-            switch (receivedResult, expectedResult) {
-            case let (.failure(receivedError), .failure):
-                XCTAssertNotNil(receivedError, file: file, line: line)
-                
-            case let (.success(receivedToken), .success(expectedToken)):
-                XCTAssertEqual(receivedToken.accessToken, expectedToken.accessToken, file: file, line: line)
-                
-            default:
-                XCTFail("Expected \(expectedResult) got \(receivedResult) instead", file: file, line: line)
-            }
-            exp.fulfill()
-        }
-        
-        completion(url, error)
-        
-        waitForExpectations(timeout: 1.0)
-    }
-    
     private class ContextMock: NSObject, ASWebAuthenticationPresentationContextProviding {
         func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
             NSWindow()
