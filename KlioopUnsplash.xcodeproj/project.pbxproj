@@ -17,6 +17,7 @@
 		31AE8E6128C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E6028C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift */; };
 		31C2D8AA28CA11CB0033C837 /* RemoteLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C2D8A928CA11CB0033C837 /* RemoteLoaderTests.swift */; };
 		31C2D8AD28CA245A0033C837 /* RemoteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C2D8AC28CA245A0033C837 /* RemoteLoader.swift */; };
+		31C2D8AF28CA24970033C837 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C2D8AE28CA24970033C837 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		31AE8E6028C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+TrackMemoryLeak.swift"; sourceTree = "<group>"; };
 		31C2D8A928CA11CB0033C837 /* RemoteLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoaderTests.swift; sourceTree = "<group>"; };
 		31C2D8AC28CA245A0033C837 /* RemoteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoader.swift; sourceTree = "<group>"; };
+		31C2D8AE28CA24970033C837 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				31C2D8AC28CA245A0033C837 /* RemoteLoader.swift */,
+				31C2D8AE28CA24970033C837 /* HTTPClient.swift */,
 			);
 			path = "Shared API";
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			files = (
 				31AE8E5B28BF992800DA6583 /* Token.swift in Sources */,
 				31AE8E5D28BF997200DA6583 /* TokenLoader.swift in Sources */,
+				31C2D8AF28CA24970033C837 /* HTTPClient.swift in Sources */,
 				31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */,
 				31AE8E5628BF966C00DA6583 /* ASTokenLoader.swift in Sources */,
 				31C2D8AD28CA245A0033C837 /* RemoteLoader.swift in Sources */,

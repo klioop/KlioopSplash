@@ -7,12 +7,6 @@
 
 import Foundation
 
-public protocol HTTPClient {
-    typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
-    
-    func perform(_ request: URLRequest, completion: @escaping (Result) -> Void)
-}
-
 public final class RemoteLoader<Resource> {
     public typealias Mapper = (Data, HTTPURLResponse) throws -> Resource
     
