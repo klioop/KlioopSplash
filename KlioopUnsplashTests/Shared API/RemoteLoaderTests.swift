@@ -63,18 +63,10 @@ class RemoteLoaderTests: XCTestCase {
     
     func test_load_deliversErrorOnFail() {
         let (sut, client) = makeSUT()
-        let error = anyNSError()
         
-        var receivedError: Error?
-        sut.load() {
-            if case let .failure(error) = $0 {
-                receivedError = error
-            }
-        }
-                        
-        client.completeLoading(with: error)
-        
-        XCTAssertNotNil(receivedError)
+        expect(sut, toCompletedWith: .failure(SUT.Error.connectivity), when: {
+            client.completeLoading(with: anyNSError())
+        })
     }
     
     func test_load_deliversResourceOnSuccess() {
@@ -83,14 +75,9 @@ class RemoteLoaderTests: XCTestCase {
             "a resource"
         })
 
-        var receivedResource: String?
-        sut.load() {
-            receivedResource = try? $0.get()
-        }
-
-        client.completeLoadingSuccessfully(with: response())
-
-        XCTAssertEqual(receivedResource, resource)
+        expect(sut, toCompletedWith: .success(resource), when: {
+            client.completeLoadingSuccessfully(with: response())
+        })
     }
 
     // MARK: - Helpers
@@ -107,6 +94,27 @@ class RemoteLoaderTests: XCTestCase {
         trackMemoryLeak(client)
         trackMemoryLeak(sut)
         return (sut, client)
+    }
+    
+    private func expect(_ sut: SUT, toCompletedWith expectedResult: Result<String, SUT.Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "wait for load completion")
+        
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedData), .success(expectedData)):
+                XCTAssertEqual(receivedData, expectedData, file: file, line: line)
+                
+            case let (.failure(receivedError), .failure(expectedError)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+                
+            default:
+                XCTFail("Expected \(expectedResult) but got \(receivedResult) instead", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
     }
     
     private class ClientSpy: HTTPClient {
