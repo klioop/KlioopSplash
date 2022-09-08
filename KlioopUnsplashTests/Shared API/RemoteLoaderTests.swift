@@ -64,7 +64,7 @@ class RemoteLoaderTests: XCTestCase {
     func test_load_deliversErrorOnFail() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompletedWith: .failure(SUT.Error.connectivity), when: {
+        expect(sut, toCompletedWith: failure(with: .connectivity), when: {
             client.completeLoading(with: anyNSError())
         })
     }
@@ -94,6 +94,10 @@ class RemoteLoaderTests: XCTestCase {
         trackMemoryLeak(client)
         trackMemoryLeak(sut)
         return (sut, client)
+    }
+    
+    private func failure(with error: SUT.Error) -> Result<String, SUT.Error> {
+        .failure(error)
     }
     
     private func expect(_ sut: SUT, toCompletedWith expectedResult: Result<String, SUT.Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
