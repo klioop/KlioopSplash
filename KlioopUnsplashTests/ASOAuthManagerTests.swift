@@ -14,15 +14,19 @@ class ASOAuthManagerTests: XCTestCase {
     func test_loadToken_deliversError() {
         let sut = makeSUT()
         
-        expect(sut, toCompletedWith: .failure(anyNSError()), with: anyNSError())
+        let receivedError = resultError(with: sut, with: anyNSError())
+        
+        XCTAssertNotNil(receivedError)
     }
     
     func test_loadToken_deliversToken() {
         let token = "a-token"
         let callbackURL = URL(string: "https://auth?token=\(token)")!
         let sut = makeSUT(url: callbackURL)
+    
+        let receivedToken = resultToken(with: sut, for: callbackURL)
         
-        expect(sut, toCompletedWith: .success(Token(accessToken: token)), for: callbackURL)
+        XCTAssertEqual(receivedToken?.accessToken, token)
     }
     
     private func makeSUT(
@@ -34,6 +38,37 @@ class ASOAuthManagerTests: XCTestCase {
         let sut = ASOAuthManager(factory: factory)
         trackMemoryLeak(sut)
         return sut
+    }
+    
+    private func result(with sut: ASOAuthManager, for url: URL?, with error: Error?) -> Result<Token, Error> {
+        let exp = expectation(description: "wait for completion")
+        
+        var receivedResult: Result<Token, Error>!
+        sut.exchangeToken { result in
+            receivedResult = result
+            exp.fulfill()
+        }(url, error)
+        
+        waitForExpectations(timeout: 1.0)
+        
+        return receivedResult
+    }
+    
+    private func resultToken(with sut: ASOAuthManager, for url: URL) -> Token? {
+        try? result(with: sut, for: url, with: nil).get()
+    }
+    
+    private func resultError(with sut: ASOAuthManager, with error: Error, file: StaticString = #filePath, line: UInt = #line) -> Error? {
+        let receivedResult = result(with: sut, for: nil, with: error)
+        
+        switch receivedResult {
+        case let .failure(error):
+            return error
+            
+        default:
+            XCTFail("Expected failure but got \(receivedResult) instead", file: file, line: line)
+            return nil
+        }
     }
     
     private func expect(_ sut: ASOAuthManager, toCompletedWith expectedResult: OAuthManager.Result, for url: URL? = anyURL(), with error: Error? = nil, file: StaticString = #filePath, line: UInt = #line) {
