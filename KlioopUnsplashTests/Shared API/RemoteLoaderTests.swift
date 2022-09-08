@@ -14,7 +14,7 @@ protocol HTTPClient {
 }
 
 final class RemoteLoader<Resource> {
-    typealias Mapper = (Data, HTTPURLResponse) -> Resource
+    typealias Mapper = (Data, HTTPURLResponse) throws -> Resource
     
     private let request: URLRequest
     private let client: HTTPClient
@@ -22,6 +22,7 @@ final class RemoteLoader<Resource> {
     
     enum Error: Swift.Error {
         case connectivity
+        case invalidData
     }
     
     init(request: URLRequest, client: HTTPClient, mapper: @escaping Mapper) {
@@ -30,16 +31,25 @@ final class RemoteLoader<Resource> {
         self.mapper = mapper
     }
     
-    func load(completion: @escaping (Result<Resource, Error>) -> Void) {
+    func load(completion: @escaping (Result<Resource, Swift.Error>) -> Void) {
         client.perform(request) { [weak self] result in
             switch result {
             case let .success((data, response)):
-                completion(.success(self!.mapper(data, response)))
+                completion(self!.map(data, from: response))
                 
             case .failure:
                 completion(.failure(Error.connectivity))
             }
-            
+        }
+    }
+    
+    private func map(_ data: Data, from response: HTTPURLResponse) -> Result<Resource, Swift.Error> {
+        Result {
+            do {
+                return try mapper(data, response)
+            } catch {
+                throw Error.invalidData
+            }
         }
     }
 }
@@ -66,6 +76,16 @@ class RemoteLoaderTests: XCTestCase {
         
         expect(sut, toCompletedWith: failure(with: .connectivity), when: {
             client.completeLoading(with: anyNSError())
+        })
+    }
+    
+    func test_load_deliversErrorOnMapperError() {
+        let (sut, client) = makeSUT(mapper: { _, _ in
+            throw anyNSError()
+        })
+
+        expect(sut, toCompletedWith: failure(with: .invalidData), when: {
+            client.completeLoadingSuccessfully(with: response())
         })
     }
     
@@ -108,7 +128,7 @@ class RemoteLoaderTests: XCTestCase {
             case let (.success(receivedData), .success(expectedData)):
                 XCTAssertEqual(receivedData, expectedData, file: file, line: line)
                 
-            case let (.failure(receivedError), .failure(expectedError)):
+            case let (.failure(receivedError as SUT.Error), .failure(expectedError)):
                 XCTAssertEqual(receivedError, expectedError, file: file, line: line)
                 
             default:
