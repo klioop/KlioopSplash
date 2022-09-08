@@ -1,5 +1,5 @@
 //
-//  ASOAuthManager.swift
+//  ASTokenLoader.swift
 //  KlioopUnsplash
 //
 //  Created by klioop on 2022/08/31.
@@ -8,7 +8,7 @@
 import Foundation
 import AuthenticationServices
 
-public final class ASOAuthManager: TokenLoader {
+public final class ASTokenLoader: TokenLoader {
     private let authURL: URL
     private let scheme: String?
     private let context: ASWebAuthenticationPresentationContextProviding

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		31AE8E2928B8DE9200DA6583 /* KlioopUnsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */; };
 		31AE8E5428BF548600DA6583 /* ASOAuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */; };
-		31AE8E5628BF966C00DA6583 /* ASOAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */; };
+		31AE8E5628BF966C00DA6583 /* ASTokenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5528BF966C00DA6583 /* ASTokenLoader.swift */; };
 		31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */; };
 		31AE8E5B28BF992800DA6583 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5A28BF992800DA6583 /* Token.swift */; };
 		31AE8E5D28BF997200DA6583 /* TokenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5C28BF997200DA6583 /* TokenLoader.swift */; };
@@ -31,7 +31,7 @@
 		31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KlioopUnsplash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31AE8E2828B8DE9200DA6583 /* KlioopUnsplashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlioopUnsplashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASOAuthManagerTests.swift; sourceTree = "<group>"; };
-		31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASOAuthManager.swift; sourceTree = "<group>"; };
+		31AE8E5528BF966C00DA6583 /* ASTokenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTokenLoader.swift; sourceTree = "<group>"; };
 		31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExtractor.swift; sourceTree = "<group>"; };
 		31AE8E5A28BF992800DA6583 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		31AE8E5C28BF997200DA6583 /* TokenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenLoader.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		31AE8E5928BF98E100DA6583 /* Splash Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				31AE8E5528BF966C00DA6583 /* ASOAuthManager.swift */,
+				31AE8E5528BF966C00DA6583 /* ASTokenLoader.swift */,
 				31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */,
 				31AE8E5A28BF992800DA6583 /* Token.swift */,
 				31AE8E5C28BF997200DA6583 /* TokenLoader.swift */,
@@ -217,7 +217,7 @@
 				31AE8E5B28BF992800DA6583 /* Token.swift in Sources */,
 				31AE8E5D28BF997200DA6583 /* TokenLoader.swift in Sources */,
 				31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */,
-				31AE8E5628BF966C00DA6583 /* ASOAuthManager.swift in Sources */,
+				31AE8E5628BF966C00DA6583 /* ASTokenLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -33,13 +33,13 @@ class ASOAuthManagerTests: XCTestCase {
         url: URL = anyURL(),
         scheme: String = "a scheme",
         context: ASWebAuthenticationPresentationContextProviding = ContextMock()
-    ) -> ASOAuthManager {
-        let sut = ASOAuthManager(authURL: url, scheme: scheme, context: context)
+    ) -> ASTokenLoader {
+        let sut = ASTokenLoader(authURL: url, scheme: scheme, context: context)
         trackMemoryLeak(sut)
         return sut
     }
     
-    private func result(with sut: ASOAuthManager, for url: URL?, with error: Error?) -> Result<Token, Error> {
+    private func result(with sut: ASTokenLoader, for url: URL?, with error: Error?) -> Result<Token, Error> {
         let exp = expectation(description: "wait for completion")
         
         var receivedResult: Result<Token, Error>!
@@ -53,11 +53,11 @@ class ASOAuthManagerTests: XCTestCase {
         return receivedResult
     }
     
-    private func resultToken(with sut: ASOAuthManager, for url: URL) -> Token? {
+    private func resultToken(with sut: ASTokenLoader, for url: URL) -> Token? {
         try? result(with: sut, for: url, with: nil).get()
     }
     
-    private func resultError(with sut: ASOAuthManager, with error: Error, file: StaticString = #filePath, line: UInt = #line) -> Error? {
+    private func resultError(with sut: ASTokenLoader, with error: Error, file: StaticString = #filePath, line: UInt = #line) -> Error? {
         let receivedResult = result(with: sut, for: nil, with: error)
         
         switch receivedResult {
