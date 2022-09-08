@@ -30,20 +30,28 @@ final class RemoteLoader {
 class RemoteLoaderTests: XCTestCase {
     
     func test_init_doesNotRequestForURL() {
-        let client = ClientSpy()
-        _ = RemoteLoader(request: anyRequest(), client: client)
+        let (_, client) = makeSUT()
         
         XCTAssertEqual(client.requestedURLs, [])
     }
     
     func test_load_requestsForAGivenURLRequest() {
-        let client = ClientSpy()
         let url = URL(string: "http://a-given-url.io")!
-        let sut = RemoteLoader(request: anyRequest(url: url), client: client)
+        let (sut, client) = makeSUT(request: anyRequest(url: url))
         
         sut.load()
         
         XCTAssertEqual(client.requestedURLs, [url])
+    }
+    
+    // MARK: - Helpers
+    
+    private func makeSUT(request: URLRequest = URLRequest(url: anyURL()), file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteLoader, client: ClientSpy) {
+        let client = ClientSpy()
+        let sut = RemoteLoader(request: request, client: client)
+        trackMemoryLeak(client)
+        trackMemoryLeak(sut)
+        return (sut, client)
     }
     
     private class ClientSpy: HTTPClient {
