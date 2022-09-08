@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		31AE8E2928B8DE9200DA6583 /* KlioopUnsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */; };
-		31AE8E2E28B8DE9200DA6583 /* KlioopUnsplashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E2D28B8DE9200DA6583 /* KlioopUnsplashTests.swift */; };
-		31AE8E2F28B8DE9200DA6583 /* KlioopUnsplash.h in Headers */ = {isa = PBXBuildFile; fileRef = 31AE8E2328B8DE9200DA6583 /* KlioopUnsplash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31AE8E5428BF548600DA6583 /* ASOAuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */; };
+		31AE8E5628BF966C00DA6583 /* ASTokenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5528BF966C00DA6583 /* ASTokenLoader.swift */; };
+		31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */; };
+		31AE8E5B28BF992800DA6583 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5A28BF992800DA6583 /* Token.swift */; };
+		31AE8E5D28BF997200DA6583 /* TokenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5C28BF997200DA6583 /* TokenLoader.swift */; };
+		31AE8E5F28C0ADC500DA6583 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5E28C0ADC500DA6583 /* TestHelpers.swift */; };
+		31AE8E6128C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E6028C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,9 +29,14 @@
 
 /* Begin PBXFileReference section */
 		31AE8E2028B8DE9200DA6583 /* KlioopUnsplash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KlioopUnsplash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		31AE8E2328B8DE9200DA6583 /* KlioopUnsplash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KlioopUnsplash.h; sourceTree = "<group>"; };
 		31AE8E2828B8DE9200DA6583 /* KlioopUnsplashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlioopUnsplashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		31AE8E2D28B8DE9200DA6583 /* KlioopUnsplashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlioopUnsplashTests.swift; sourceTree = "<group>"; };
+		31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASOAuthManagerTests.swift; sourceTree = "<group>"; };
+		31AE8E5528BF966C00DA6583 /* ASTokenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTokenLoader.swift; sourceTree = "<group>"; };
+		31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExtractor.swift; sourceTree = "<group>"; };
+		31AE8E5A28BF992800DA6583 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		31AE8E5C28BF997200DA6583 /* TokenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenLoader.swift; sourceTree = "<group>"; };
+		31AE8E5E28C0ADC500DA6583 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		31AE8E6028C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+TrackMemoryLeak.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +79,7 @@
 		31AE8E2228B8DE9200DA6583 /* KlioopUnsplash */ = {
 			isa = PBXGroup;
 			children = (
-				31AE8E2328B8DE9200DA6583 /* KlioopUnsplash.h */,
+				31AE8E5928BF98E100DA6583 /* Splash Authentication */,
 			);
 			path = KlioopUnsplash;
 			sourceTree = "<group>";
@@ -77,9 +87,22 @@
 		31AE8E2C28B8DE9200DA6583 /* KlioopUnsplashTests */ = {
 			isa = PBXGroup;
 			children = (
-				31AE8E2D28B8DE9200DA6583 /* KlioopUnsplashTests.swift */,
+				31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */,
+				31AE8E5E28C0ADC500DA6583 /* TestHelpers.swift */,
+				31AE8E6028C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift */,
 			);
 			path = KlioopUnsplashTests;
+			sourceTree = "<group>";
+		};
+		31AE8E5928BF98E100DA6583 /* Splash Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				31AE8E5528BF966C00DA6583 /* ASTokenLoader.swift */,
+				31AE8E5728BF98C200DA6583 /* TokenExtractor.swift */,
+				31AE8E5A28BF992800DA6583 /* Token.swift */,
+				31AE8E5C28BF997200DA6583 /* TokenLoader.swift */,
+			);
+			path = "Splash Authentication";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,7 +112,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31AE8E2F28B8DE9200DA6583 /* KlioopUnsplash.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +166,7 @@
 				TargetAttributes = {
 					31AE8E1F28B8DE9200DA6583 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 					};
 					31AE8E2728B8DE9200DA6583 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -191,6 +214,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AE8E5B28BF992800DA6583 /* Token.swift in Sources */,
+				31AE8E5D28BF997200DA6583 /* TokenLoader.swift in Sources */,
+				31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */,
+				31AE8E5628BF966C00DA6583 /* ASTokenLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +225,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31AE8E2E28B8DE9200DA6583 /* KlioopUnsplashTests.swift in Sources */,
+				31AE8E5428BF548600DA6583 /* ASOAuthManagerTests.swift in Sources */,
+				31AE8E5F28C0ADC500DA6583 /* TestHelpers.swift in Sources */,
+				31AE8E6128C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +364,7 @@
 		31AE8E3328B8DE9200DA6583 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -356,6 +386,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -363,6 +394,7 @@
 		31AE8E3428B8DE9200DA6583 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -391,6 +423,7 @@
 		31AE8E3628B8DE9200DA6583 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7DY6Z945T9;
@@ -406,6 +439,7 @@
 		31AE8E3728B8DE9200DA6583 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7DY6Z945T9;
