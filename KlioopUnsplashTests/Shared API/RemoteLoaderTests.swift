@@ -33,9 +33,11 @@ final class RemoteLoader<Resource> {
     
     func load(completion: @escaping (Result<Resource, Swift.Error>) -> Void) {
         client.perform(request) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case let .success((data, response)):
-                completion(self!.map(data, from: response))
+                completion(self.map(data, from: response))
                 
             case .failure:
                 completion(.failure(Error.connectivity))
@@ -98,6 +100,19 @@ class RemoteLoaderTests: XCTestCase {
         expect(sut, toCompletedWith: .success(resource), when: {
             client.completeLoadingSuccessfully(with: response())
         })
+    }
+    
+    func test_load_deliversNothingAfterSUTInstanceHasBeenDeallocated() {
+        let client = ClientSpy()
+        var sut: SUT? = .init(request: anyRequest(), client: client, mapper: { _, _ in "any" })
+        
+        var receivedResult: Result<String, Error>?
+        sut?.load { receivedResult = $0 }
+        
+        sut = nil
+        client.completeLoading(with: anyNSError())
+        
+        XCTAssertNil(receivedResult)
     }
 
     // MARK: - Helpers
