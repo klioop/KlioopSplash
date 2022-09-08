@@ -15,6 +15,9 @@
 		31AE8E5D28BF997200DA6583 /* TokenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5C28BF997200DA6583 /* TokenLoader.swift */; };
 		31AE8E5F28C0ADC500DA6583 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E5E28C0ADC500DA6583 /* TestHelpers.swift */; };
 		31AE8E6128C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE8E6028C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift */; };
+		31C2D8AA28CA11CB0033C837 /* RemoteLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C2D8A928CA11CB0033C837 /* RemoteLoaderTests.swift */; };
+		31C2D8AD28CA245A0033C837 /* RemoteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C2D8AC28CA245A0033C837 /* RemoteLoader.swift */; };
+		31C2D8AF28CA24970033C837 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C2D8AE28CA24970033C837 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,9 @@
 		31AE8E5C28BF997200DA6583 /* TokenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenLoader.swift; sourceTree = "<group>"; };
 		31AE8E5E28C0ADC500DA6583 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		31AE8E6028C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+TrackMemoryLeak.swift"; sourceTree = "<group>"; };
+		31C2D8A928CA11CB0033C837 /* RemoteLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoaderTests.swift; sourceTree = "<group>"; };
+		31C2D8AC28CA245A0033C837 /* RemoteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoader.swift; sourceTree = "<group>"; };
+		31C2D8AE28CA24970033C837 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 		31AE8E2228B8DE9200DA6583 /* KlioopUnsplash */ = {
 			isa = PBXGroup;
 			children = (
+				31C2D8AB28CA24530033C837 /* Shared API */,
 				31AE8E5928BF98E100DA6583 /* Splash Authentication */,
 			);
 			path = KlioopUnsplash;
@@ -87,6 +94,7 @@
 		31AE8E2C28B8DE9200DA6583 /* KlioopUnsplashTests */ = {
 			isa = PBXGroup;
 			children = (
+				31C2D8A828CA11BE0033C837 /* Shared API */,
 				31AE8E5328BF548600DA6583 /* ASOAuthManagerTests.swift */,
 				31AE8E5E28C0ADC500DA6583 /* TestHelpers.swift */,
 				31AE8E6028C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift */,
@@ -103,6 +111,23 @@
 				31AE8E5C28BF997200DA6583 /* TokenLoader.swift */,
 			);
 			path = "Splash Authentication";
+			sourceTree = "<group>";
+		};
+		31C2D8A828CA11BE0033C837 /* Shared API */ = {
+			isa = PBXGroup;
+			children = (
+				31C2D8A928CA11CB0033C837 /* RemoteLoaderTests.swift */,
+			);
+			path = "Shared API";
+			sourceTree = "<group>";
+		};
+		31C2D8AB28CA24530033C837 /* Shared API */ = {
+			isa = PBXGroup;
+			children = (
+				31C2D8AC28CA245A0033C837 /* RemoteLoader.swift */,
+				31C2D8AE28CA24970033C837 /* HTTPClient.swift */,
+			);
+			path = "Shared API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,8 +241,10 @@
 			files = (
 				31AE8E5B28BF992800DA6583 /* Token.swift in Sources */,
 				31AE8E5D28BF997200DA6583 /* TokenLoader.swift in Sources */,
+				31C2D8AF28CA24970033C837 /* HTTPClient.swift in Sources */,
 				31AE8E5828BF98C200DA6583 /* TokenExtractor.swift in Sources */,
 				31AE8E5628BF966C00DA6583 /* ASTokenLoader.swift in Sources */,
+				31C2D8AD28CA245A0033C837 /* RemoteLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31C2D8AA28CA11CB0033C837 /* RemoteLoaderTests.swift in Sources */,
 				31AE8E5428BF548600DA6583 /* ASOAuthManagerTests.swift in Sources */,
 				31AE8E5F28C0ADC500DA6583 /* TestHelpers.swift in Sources */,
 				31AE8E6128C0AE1300DA6583 /* XCTestCase+TrackMemoryLeak.swift in Sources */,
